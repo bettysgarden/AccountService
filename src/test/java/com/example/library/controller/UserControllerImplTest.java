@@ -41,8 +41,8 @@ class UserControllerImplTest {
     void testGetAllUsers() {
         // Prepare
         List<User> users = new ArrayList<>();
-        users.add(new User(1L, 25, "New York", "john", "password"));
-        users.add(new User(2L, 30, "London", "alice", "password"));
+        users.add(new User(1L, 25, "New York", "john"));
+        users.add(new User(2L, 30, "London", "alice"));
         when(userServiceImpl.getAll()).thenReturn(users);
 
         // Execute
@@ -73,8 +73,8 @@ class UserControllerImplTest {
     @Test
     void testCreateUser() {
         // Prepare
-        User user = new User(null, 25, "New York", "john", "password");
-        User createdUser = new User(1L, 25, "New York", "john", "password");
+        User user = new User(null, 25, "New York", "john");
+        User createdUser = new User(1L, 25, "New York", "john");
         when(userServiceImpl.save(user)).thenReturn(createdUser);
 
         // Execute

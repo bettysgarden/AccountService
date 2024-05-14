@@ -1,15 +1,10 @@
 package com.example.library.entity;
 
-import com.example.library.auth.enums.Role;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
@@ -19,11 +14,9 @@ import java.util.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "age")
@@ -35,9 +28,6 @@ public class User implements UserDetails {
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "password", nullable = false)
-    private String password;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
@@ -46,25 +36,21 @@ public class User implements UserDetails {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, age, location, username, password, reviews, comments);
+        return Objects.hash(id, age, location, username, reviews, comments);
     }
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
 
-    public User(Integer age, String location, String username, String password) {
+    public User(Integer age, String location, String username) {
         this.age = age;
         this.location = location;
         this.username = username;
-        this.password = password;
     }
 
-    public User(Long id, Integer age, String location, String username, String password) {
+    public User(Long id, Integer age, String location, String username) {
         this.id = id;
         this.age = age;
         this.location = location;
         this.username = username;
-        this.password = password;
     }
 
     public Long getId() {
@@ -75,13 +61,6 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
     public Integer getAge() {
         return age;
@@ -101,44 +80,6 @@ public class User implements UserDetails {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public List<Review> getReviews() {
@@ -164,8 +105,6 @@ public class User implements UserDetails {
                 ", age=" + age +
                 ", location='" + location + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
                 '}';
     }
 
@@ -174,6 +113,6 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(age, user.age) && Objects.equals(location, user.location) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(reviews, user.reviews) && Objects.equals(comments, user.comments);
+        return Objects.equals(id, user.id) && Objects.equals(age, user.age) && Objects.equals(location, user.location) && Objects.equals(username, user.username) && Objects.equals(reviews, user.reviews) && Objects.equals(comments, user.comments);
     }
 }

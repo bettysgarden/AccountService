@@ -32,7 +32,7 @@ class UserServiceImplTest {
     @Test
     void findById() {
         long userId = 1;
-        User user = new User(12, "NYC", "username", "password");
+        User user = new User(12, "NYC", "username");
         Optional<User> optionalUser = Optional.of(user);
 
         when(userRepository.findById(userId)).thenReturn(optionalUser);
@@ -47,8 +47,8 @@ class UserServiceImplTest {
     @Test
     void getAll() {
         List<User> users = new ArrayList<>();
-        users.add(new User(12, "NYC", "beatrix", "password"));
-        users.add(new User(12, "NYC", "username", "password"));
+        users.add(new User(12, "NYC", "beatrix"));
+        users.add(new User(12, "NYC", "username"));
 
         when(userRepository.findAll()).thenReturn(users);
 
@@ -61,7 +61,7 @@ class UserServiceImplTest {
 
     @Test
     void save() {
-        User user = new User(12, "NYC", "username", "password");
+        User user = new User(12, "NYC", "username");
 
         when(userRepository.save(any(User.class))).thenReturn(user);
 
