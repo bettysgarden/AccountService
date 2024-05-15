@@ -57,10 +57,11 @@
             <artifactId>spring-security-web</artifactId>
             <version>6.1.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
+            <version>1.18.32</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -89,20 +90,6 @@
             <version>8.0.0.Final</version>
         </dependency>
 
-        <!--Logger-->
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.7</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.20.0</version>
-        </dependency>
-
         <!-- PostgreSQL Driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -115,21 +102,29 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>4.22.0</version>
+            <version>4.27.0</version>
         </dependency>
 
-        <!--        Cache-->
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+        <!--Logger-->
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>3.1.0</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.13</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.23.1</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>3.1.0</version>
+            <version>3.2.5</version>
         </dependency>
 
 
@@ -159,7 +154,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.3.1</version>
+            <version>5.12.0</version>
             <scope>test</scope>
         </dependency>
 

@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: kolesnikova
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: user_account
+      changes:
+        - createTable:
+            tableName: user_account
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    autoIncrement: true
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: true
+                    nullable: false
